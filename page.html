@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parking Slots</title>
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+
+<table>
+  <thead>
+    <tr>
+      <th>Floor</th>
+      <th>Status</th>
+      <th>Parking Slot</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody id="parkingData">
+    <!-- Data will be dynamically added here -->
+  </tbody>
+</table>
+
+<script>
+  // Function to generate table rows from JSON data
+  function generateTableRows(data) {
+    var html = '';
+    data.forEach(function(item) {
+      html += '<tr>';
+      html += '<td>' + item.floor + '</td>';
+      html += '<td>' + item.status + '</td>';
+      html += '<td>' + item.parking_slot + '</td>';
+      html += '<td>' + item.price + '</td>';
+      html += '</tr>';
+    });
+    return html;
+  }
+
+  // Function to fetch data from API and populate table
+  function fetchDataAndPopulateTable() {
+    fetch('http:// 192.168.121.95:8000/parking/public/parking_lot')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('parkingData').innerHTML = generateTableRows(data);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
+
+  // Call the function to fetch data and populate table on page load
+  fetchDataAndPopulateTable();
+</script>
+
+</body>
+</html>
