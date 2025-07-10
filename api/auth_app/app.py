@@ -25,8 +25,8 @@ def email_send(email,data):
 
 def send_email(email: str, data: dict):
     # Email configuration
-    sender_email = "roshanreward360@gmail.com"  # Replace with your email
-    sender_password = "kwnd sfgc dtui vrvs"  # Replace with your password
+    sender_email = "faizan@gmail.com"
+    sender_password = "kwnd sfgc dtui vrvs"
     smtp_server = "smtp.gmail.com"
     smtp_port = 587
 
@@ -39,7 +39,7 @@ def send_email(email: str, data: dict):
     # Create the body of the message (a plain-text and an HTML version).
     text = f"Here is your data: {data}"
 
-    html_email_template = """
+    html_email_template = f"""
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -56,10 +56,10 @@ def send_email(email: str, data: dict):
     <p>Thank you for booking a parking space with us. Below are the details of your booking:</p>
 
     <ul>
-        <li><strong>Price:</strong> Rs 6.13</li>
-        <li><strong>Status:</strong> Available</li>
-        <li><strong>Parking Slot:</strong> L1S1</li>
-        <li><strong>Floor:</strong> 1</li>
+        <li><strong>Price:</strong> Rs {data.get("price")}</li>
+        <li><strong>Status:</strong> {data.get("status")}</li>
+        <li><strong>Parking Slot:</strong> {data.get("parking_slot")}</li>
+        <li><strong>Floor:</strong>{data.get("floor")} </li>
     </ul>
 
     <p>Your parking space has been successfully reserved. Please make sure to arrive on time and present this email confirmation at the parking lot entrance for validation.</p>

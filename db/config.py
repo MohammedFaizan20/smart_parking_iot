@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     #mongo credentials
     mongo_url:str
     db_name:str
+    sql_db_url: str
 
     class Config:
         env_file = ".env"
