@@ -122,7 +122,7 @@ Access:
 
 2) Connect your ESP32 or NodeMCU.
 
-3) Flash the sketch (check repo).
+3) Flash the sketch (check repo - parking_sensor.ino).
 
 4) Make sure WiFi SSID, password, and backend URL are correct.
 
